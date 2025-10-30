@@ -33,7 +33,7 @@ namespace ADSPortEx2
             inOrder(root, ref buffer);
         }
 
-        private void inOrder(Node<T> tree, ref string buffer)
+        public void inOrder(Node<T> tree, ref string buffer)
         {
             if (tree != null)
             {
@@ -43,26 +43,38 @@ namespace ADSPortEx2
             }
         }
 
-        public void PreOrder(Node<T> tree, ref string buffer)
-        {           
-            buffer += tree.Data.ToString() + ",";
-            PreOrder(tree.Left, ref buffer);
-            PreOrder(tree.Right, ref buffer);
+        public void PreOrder(ref string buffer)
+        {
+            preOrder(root, ref buffer);
         }
 
-        public void PostOrder(Node<T> tree, ref string buffer)
+        public void preOrder(Node<T> tree, ref string buffer)
+        {           
+            
+            if (tree != null)
+            {
+                buffer += tree.Data.ToString() + ",";
+                preOrder(tree.Left, ref buffer);
+                preOrder(tree.Right, ref buffer);
+            }
+        }
+
+        public void PostOrder(ref string buffer)
+        {
+            postOrder(root, ref buffer);
+        }
+
+        public void postOrder(Node<T> tree, ref string buffer)
         {
             if (tree != null)
             {
-                PostOrder(tree.Left, ref buffer);
-                PostOrder(tree.Right, ref buffer);
+                postOrder(tree.Left, ref buffer);
+                postOrder(tree.Right, ref buffer);
                 buffer += tree.Data.ToString() + ",";
             }
         }
 
         //Free space, use as necessary to address task requirements... 
-
-
 
 
 

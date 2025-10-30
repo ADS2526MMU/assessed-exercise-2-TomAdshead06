@@ -17,6 +17,7 @@ namespace ADSPortEx2
     class BSTree<T> : BinTree<T> where T : IComparable
     {
 
+        int treeSize = 0;
 
         public BSTree()
         {
@@ -33,15 +34,16 @@ namespace ADSPortEx2
         {
             if (tree == null)
             {
+                treeSize++;
                 tree = new Node<T>(item);
             }
-            else if (item.CompareTo(root.Data) < 0)
+            else if (item.CompareTo(tree.Data) < 0)
             {
-                insertItem(item, ref root.Left);
+                insertItem(item, ref tree.Left);
             }
-            else if(item.CompareTo(root.Data) > 0)
+            else if(item.CompareTo(tree.Data) > 0)
             {
-                insertItem(item, ref root.Left);
+                insertItem(item, ref tree.Right);
             }
         }
 
@@ -59,7 +61,7 @@ namespace ADSPortEx2
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return treeSize;
         }
 
         public void Update(T item)
@@ -68,9 +70,6 @@ namespace ADSPortEx2
         }
 
         //Free space, use as necessary to address task requirements... 
-
-
-
 
 
     }// End of class

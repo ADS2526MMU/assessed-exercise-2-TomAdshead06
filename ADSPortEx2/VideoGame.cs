@@ -51,5 +51,10 @@ namespace ADSPortEx2
             return Title.CompareTo(other.Title);
         }
 
+        public override string ToString()
+        {
+            return " Title: " + gameTitle + " Game Dev: "+gameDeveloper+ " Year: "+gameReleaseYear;
+        }
+
     }// End of class
 }
