@@ -16,7 +16,7 @@ namespace ADSPortEx2
 
             while (loop)
             {
-                Console.WriteLine("1 - Add to tree\n2 - Display height\n3 - In order\n4 - Pre order\n5 - Post order\n6 - Earliest game\n7 - Count\n8 - Quit");
+                Console.WriteLine("1 - Add to tree\n2 - Display height\n3 - In order\n4 - Pre order\n5 - Post order\n6 - Earliest game\n7 - Count\n8 - Find and update node\n9 - Quit");
                 try
                 {
                     int input = int.Parse(Console.ReadLine());
@@ -34,7 +34,7 @@ namespace ADSPortEx2
                     }
                     else if (input == 2)
                     {
-                        
+                        Console.WriteLine(tree.Height());
                     }
                     else if (input == 3)
                     {
@@ -63,6 +63,18 @@ namespace ADSPortEx2
                         Console.WriteLine(tree.Count());
                     }
                     else if (input == 8)
+                    {
+                        Console.WriteLine("Enter a game name");
+                        string title = Console.ReadLine();
+                        Console.WriteLine("Enter game developer");
+                        string gameDev = Console.ReadLine();
+                        Console.WriteLine("Year released");
+                        int year = int.Parse(Console.ReadLine());
+                        VideoGame game = new VideoGame(title, gameDev, year);
+                        tree.Update(game);
+
+                    }
+                    else if (input == 9)
                     {
                         loop = false;
                     }

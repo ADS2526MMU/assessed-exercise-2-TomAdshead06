@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,6 @@ namespace ADSPortEx2
 
     class BSTree<T> : BinTree<T> where T : IComparable
     {
-
-        int treeSize = 0;
-
         public BSTree()
         {
             root = null;
@@ -34,7 +32,6 @@ namespace ADSPortEx2
         {
             if (tree == null)
             {
-                treeSize++;
                 tree = new Node<T>(item);
             }
             else if (item.CompareTo(tree.Data) < 0)
@@ -49,7 +46,19 @@ namespace ADSPortEx2
 
         public int Height()
         {
-            throw new NotImplementedException();
+            return height(ref root);
+        }
+
+        public int height(ref Node<T> nodes)
+        {
+            if (nodes == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1 + Math.Max(height(ref nodes.Left), height(ref nodes.Right));
+            }
         }
 
         public T EarliestGame()
@@ -57,16 +66,52 @@ namespace ADSPortEx2
             throw new NotImplementedException();
         }
 
-        //Functions for EX.2B
+        public T earliestGame(ref Node<T> nodes, List<T> years)
+        {
+            throw new NotImplementedException();
+        }
 
+        //Functions for EX.2B
         public int Count()
         {
-            return treeSize;
+            return count(ref root);
+        }
+
+        public int count(ref Node<T> nodes)
+        {
+            if (nodes == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1 + height(ref nodes.Left) + height(ref nodes.Right);
+            }
         }
 
         public void Update(T item)
         {
-            throw new NotImplementedException();
+            update(item, ref root);
+        }
+
+        public void update(T item, ref Node<T> nodes)
+        {
+            if (item.CompareTo(nodes.Data) < 0)
+            {
+                update(item, ref nodes.Left);
+            }
+            else if (item.CompareTo(nodes.Data) > 0)
+            {
+                update(item, ref nodes.Right);
+            }
+            else if (item.CompareTo(nodes.Data) == 0)
+            {
+                VideoGame game = nodes.Data as VideoGame;
+                Console.WriteLine("Enter a new name");
+                string newName = Console.ReadLine();
+                game.gameTitle = newName;
+            }
+
         }
 
         //Free space, use as necessary to address task requirements... 

@@ -76,7 +76,5 @@ namespace ADSPortEx2
 
         //Free space, use as necessary to address task requirements... 
 
-
-
     } // End of class
 }
